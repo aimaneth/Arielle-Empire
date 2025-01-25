@@ -35,15 +35,15 @@ const services: Service[] = [
     subtitle: 'Modern web solutions.',
     description: 'Full-stack development with the latest technologies and frameworks.',
     icon: CodeBracketIcon,
-    gradient: 'from-blue-500/20 to-blue-600/20',
+    gradient: 'from-blue-500/30 to-blue-600/30',
     borderGlow: '',
     textAccent: 'text-blue-400',
     type: 'tech-list',
     technologies: [
-      { icon: 'https://cdn.simpleicons.org/react/3B82F6', name: 'React' },
-      { icon: 'https://cdn.simpleicons.org/next.js/3B82F6', name: 'Next.js' },
-      { icon: 'https://cdn.simpleicons.org/nodedotjs/3B82F6', name: 'Node.js' },
-      { icon: 'https://cdn.simpleicons.org/typescript/3B82F6', name: 'TypeScript' }
+      { icon: '/tech/react.svg', name: 'React.js' },
+      { icon: '/tech/next.svg', name: 'Next.js' },
+      { icon: '/tech/node.svg', name: 'Node.js' },
+      { icon: '/tech/typescript.svg', name: 'TypeScript' }
     ]
   },
   {
@@ -51,15 +51,15 @@ const services: Service[] = [
     subtitle: 'Native & Cross-platform.',
     description: 'Build powerful mobile apps for iOS and Android platforms.',
     icon: DevicePhoneMobileIcon,
-    gradient: 'from-purple-500/20 to-purple-600/20',
+    gradient: 'from-purple-500/30 to-purple-600/30',
     borderGlow: '',
     textAccent: 'text-purple-400',
     type: 'tech-list',
     technologies: [
-      { icon: 'https://cdn.simpleicons.org/flutter/9333EA', name: 'Flutter' },
-      { icon: 'https://cdn.simpleicons.org/swift/9333EA', name: 'iOS Native' },
-      { icon: 'https://cdn.simpleicons.org/kotlin/9333EA', name: 'Android Native' },
-      { icon: 'https://cdn.simpleicons.org/react/9333EA', name: 'React Native' }
+      { icon: '/tech/flutter.svg', name: 'Flutter' },
+      { icon: '/tech/react-native.svg', name: 'React Native' },
+      { icon: '/tech/swift.svg', name: 'Swift' },
+      { icon: '/tech/kotlin.svg', name: 'Kotlin' }
     ]
   },
   {
@@ -67,15 +67,15 @@ const services: Service[] = [
     subtitle: 'Scalable infrastructure.',
     description: 'Deploy and scale your applications seamlessly.',
     icon: CloudArrowUpIcon,
-    gradient: 'from-emerald-500/20 to-emerald-600/20',
+    gradient: 'from-emerald-500/30 to-emerald-600/30',
     borderGlow: '',
     textAccent: 'text-emerald-400',
     type: 'tech-list',
     technologies: [
-      { icon: 'https://cdn.simpleicons.org/amazonwebservices/10B981', name: 'Amazon AWS' },
-      { icon: 'https://cdn.simpleicons.org/googlecloud/10B981', name: 'Google Cloud' },
-      { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', name: 'Microsoft Azure' },
-      { icon: 'https://cdn.simpleicons.org/docker/10B981', name: 'Containerization' }
+      { icon: '/tech/aws.svg', name: 'AWS Cloud' },
+      { icon: '/tech/gcp.svg', name: 'Google Cloud' },
+      { icon: '/tech/azure.svg', name: 'Azure Cloud' },
+      { icon: '/tech/docker.svg', name: 'Docker' }
     ]
   },
   {
@@ -83,7 +83,7 @@ const services: Service[] = [
     subtitle: 'Intelligent solutions.',
     description: 'Leverage machine learning and AI capabilities.',
     icon: CubeIcon,
-    gradient: 'from-rose-500/20 to-rose-600/20',
+    gradient: 'from-rose-500/30 to-rose-600/30',
     borderGlow: '',
     textAccent: 'text-rose-400',
     type: 'metrics',
@@ -120,16 +120,7 @@ const TechnologyIcon: React.FC<TechnologyIconProps> = ({ src, alt, className = '
           alt={alt}
           width={24}
           height={24}
-          className={`${
-            src.includes('devicon') 
-              ? 'brightness-0 invert' 
-              : ''
-          } transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-          style={{
-            filter: src.includes('devicon') 
-              ? 'invert(67%) sepia(29%) saturate(1080%) hue-rotate(116deg) brightness(88%) contrast(88%)'
-              : undefined
-          }}
+          className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
           onLoad={() => setIsLoading(false)}
           onError={() => {
             setIsLoading(false)
@@ -184,7 +175,7 @@ export default function Services() {
               <motion.div 
                 className={`absolute inset-0 bg-gradient-to-b ${service.gradient}`}
                 animate={{
-                  opacity: hoveredService === service.title ? 0.3 : 0.2,
+                  opacity: hoveredService === service.title ? 0.4 : 0.3,
                 }}
                 transition={{ duration: 0.3 }}
               />
@@ -199,11 +190,11 @@ export default function Services() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <service.icon className="w-6 h-6 text-white" />
+                  <service.icon className={`w-6 h-6 ${service.textAccent}`} />
                   <h3 className="text-xl text-white font-medium">{service.title}</h3>
                 </div>
 
-                <h2 className="text-2xl text-white font-semibold mb-2">{service.subtitle}</h2>
+                <h2 className={`text-2xl font-semibold mb-2 ${service.textAccent}`}>{service.subtitle}</h2>
                 <p className="text-gray-400 mb-6">{service.description}</p>
 
                 {service.type === 'tech-list' && service.technologies && (
@@ -212,7 +203,7 @@ export default function Services() {
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.05 }}
-                        className="flex items-center gap-3 p-3 rounded-lg bg-black/40 hover:bg-black/60 transition-colors"
+                        className={`flex items-center gap-3 p-3 rounded-lg bg-black/30 hover:bg-black/40 transition-colors border border-transparent hover:border-${service.textAccent.split('-')[1]}/20`}
                       >
                         <TechnologyIcon src={tech.icon} alt={tech.name} />
                         <div>
@@ -229,7 +220,7 @@ export default function Services() {
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.02 }}
-                        className="flex items-center justify-between p-3 rounded-lg bg-black/40 hover:bg-black/60 transition-colors"
+                        className={`flex items-center justify-between p-3 rounded-lg bg-black/30 hover:bg-black/40 transition-colors border border-transparent hover:border-${service.textAccent.split('-')[1]}/20`}
                       >
                         <span className="text-white">{metric.name}</span>
                         <div className="text-right">
