@@ -5,7 +5,6 @@ Modern digital solutions company website built with Next.js 14, React, TypeScrip
 ## Features
 
 - 🎨 Modern and sleek design with glass morphism effects
-- 🌙 Dark mode support
 - 📱 Fully responsive design
 - ⚡ Next.js 14 with App Router
 - 🎭 Framer Motion animations
