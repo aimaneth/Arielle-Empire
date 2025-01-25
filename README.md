@@ -19,7 +19,7 @@ Modern digital solutions company website built with Next.js 14, React, TypeScrip
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/arielle-empire.git
+git clone https://github.com/aimaneth/Grit-Studio.git
 ```
 
 2. Install dependencies:
