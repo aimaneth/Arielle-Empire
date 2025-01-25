@@ -246,7 +246,7 @@ export default function Footer() {
             className="flex flex-col md:flex-row justify-between items-center"
           >
             <p className="text-purple-200/60 text-sm">
-              © {new Date().getFullYear()} Grit. Studio. All rights reserved.
+              © {new Date().getFullYear()} Grit Studio. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-4">
               <Link
