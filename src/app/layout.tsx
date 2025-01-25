@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import ThemeProvider from '../components/ThemeProvider'
 import Navbar from '../components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -76,13 +75,11 @@ export default function RootLayout({
         {/* Global noise overlay */}
         <div className="noise fixed inset-0" />
         
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {/* Main content */}
-          <div className="relative">
-            <Navbar />
-            <main className="relative">{children}</main>
-          </div>
-        </ThemeProvider>
+        {/* Main content */}
+        <div className="relative">
+          <Navbar />
+          <main className="relative">{children}</main>
+        </div>
       </body>
     </html>
   )

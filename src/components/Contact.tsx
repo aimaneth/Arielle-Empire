@@ -22,7 +22,7 @@ const contactInfo: ContactInfo[] = [
   {
     icon: EnvelopeIcon,
     label: 'Email',
-    value: 'arielleofficialhq@gmail.com',
+    value: 'gritstudiox@gmail.com',
     gradient: 'from-fuchsia-600 to-violet-600',
   },
   {
