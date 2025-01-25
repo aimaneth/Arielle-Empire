@@ -2,35 +2,44 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
-const projects = [
+const portfolioItems = [
   {
     title: 'E-Commerce Platform',
     description: 'A modern e-commerce platform built with Next.js and Stripe',
     category: 'web',
-    image: '/portfolio/ecommerce.jpg',
-    gradient: 'from-purple-600 to-fuchsia-600',
+    image: '/portfolio/ecommerce.png',
   },
   {
     title: 'Mobile Banking App',
     description: 'Secure and intuitive mobile banking application',
     category: 'mobile',
-    image: '/portfolio/banking.jpg',
-    gradient: 'from-fuchsia-600 to-violet-600',
+    image: '/portfolio/banking.png',
   },
   {
     title: 'Cloud Management Dashboard',
     description: 'Enterprise cloud resource management system',
     category: 'cloud',
-    image: '/portfolio/cloud.jpg',
-    gradient: 'from-violet-600 to-purple-600',
+    image: '/portfolio/cloud.png',
   },
   {
     title: 'Healthcare Platform',
     description: 'Digital healthcare management system',
     category: 'web',
-    image: '/portfolio/healthcare.jpg',
-    gradient: 'from-purple-500 to-fuchsia-500',
+    image: '/portfolio/healthcare.png',
+  },
+  {
+    title: 'ICO Landing Page',
+    description: 'Decentralised Crypto ICO Platform',
+    category: 'web',
+    image: '/portfolio/cryptoico.png',
+  },
+  {
+    title: 'Crypto Dashboard',
+    description: 'Decentralised Crypto Dashboard',
+    category: 'web',
+    image: '/portfolio/cryptodashboard.png',
   },
 ]
 
@@ -39,7 +48,7 @@ const categories = ['all', 'web', 'mobile', 'cloud']
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  const filteredProjects = projects.filter(
+  const filteredProjects = portfolioItems.filter(
     (project) => selectedCategory === 'all' || project.category === selectedCategory
   )
 
@@ -94,16 +103,17 @@ export default function Portfolio() {
                 transition={{ duration: 0.3 }}
                 className="group"
               >
-                <div className="glass-effect rounded-2xl overflow-hidden">
+                <div className="glass-effect rounded-2xl overflow-hidden bg-[#121212]">
                   <div className="relative aspect-video overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
+                      width={640}
+                      height={360}
                       className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 bg-[#121212]">
                     <h3 className="text-lg font-medium text-white">
                       {project.title}
                     </h3>

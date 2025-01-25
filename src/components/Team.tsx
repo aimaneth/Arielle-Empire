@@ -22,7 +22,7 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: 'Nur Ammelia',
+    name: 'Ariffin Yusof',
     role: 'CEO & Founder',
     image: '/team/john.jpg',
     bio: 'Visionary leader with 7 years of experience in Business Development.',

@@ -54,7 +54,7 @@ export default function About() {
                 whileInView={{ opacity: 1 }}
                 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-violet-400"
               >
-                About Arielle Empire
+                About Us
               </motion.h2>
               <p className="text-lg text-purple-200/80">
                 We are a forward-thinking technology company specializing in creating innovative digital solutions 
@@ -72,10 +72,20 @@ export default function About() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative group"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-fuchsia-600/10 rounded-lg -z-10" />
+                  <div className={`absolute inset-0 rounded-lg -z-10 ${
+                    index === 0 ? 'bg-gradient-to-r from-purple-600/10 to-fuchsia-600/10' :
+                    index === 1 ? 'bg-gradient-to-r from-blue-600/10 to-cyan-600/10' :
+                    index === 2 ? 'bg-gradient-to-r from-emerald-600/10 to-teal-600/10' :
+                    'bg-gradient-to-r from-rose-600/10 to-pink-600/10'
+                  }`} />
                   <div className="relative p-4 rounded-lg">
                     <div className="flex items-center gap-3 mb-2">
-                      <feature.icon className="h-5 w-5 text-purple-400" />
+                      <feature.icon className={`h-5 w-5 ${
+                        index === 0 ? 'text-purple-400' :
+                        index === 1 ? 'text-blue-400' :
+                        index === 2 ? 'text-emerald-400' :
+                        'text-rose-400'
+                      }`} />
                       <h3 className="font-semibold text-white">{feature.title}</h3>
                     </div>
                     <p className="text-purple-200/70 text-sm">{feature.description}</p>
@@ -110,9 +120,19 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 rounded-xl bg-gradient-to-r from-purple-500/10 to-fuchsia-500/10 backdrop-blur-sm"
+                  className={`p-6 rounded-xl backdrop-blur-sm ${
+                    index === 0 ? 'bg-gradient-to-r from-purple-500/10 to-fuchsia-500/10' :
+                    index === 1 ? 'bg-gradient-to-r from-blue-500/10 to-cyan-500/10' :
+                    index === 2 ? 'bg-gradient-to-r from-emerald-500/10 to-teal-500/10' :
+                    'bg-gradient-to-r from-rose-500/10 to-pink-500/10'
+                  }`}
                 >
-                  <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-400">
+                  <div className={`text-2xl font-bold text-transparent bg-clip-text ${
+                    index === 0 ? 'bg-gradient-to-r from-purple-400 to-fuchsia-400' :
+                    index === 1 ? 'bg-gradient-to-r from-blue-400 to-cyan-400' :
+                    index === 2 ? 'bg-gradient-to-r from-emerald-400 to-teal-400' :
+                    'bg-gradient-to-r from-rose-400 to-pink-400'
+                  }`}>
                     {stat.value}
                   </div>
                   <p className="text-purple-200/80 text-sm">{stat.label}</p>

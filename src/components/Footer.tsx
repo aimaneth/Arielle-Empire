@@ -132,8 +132,14 @@ export default function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Link href="/" className="text-2xl font-bold gradient-text">
-                ARIELLE EMPIRE
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/logo/logo.png"
+                  alt="Arielle Empire"
+                  width={180}
+                  height={48}
+                  className="h-12 w-auto"
+                />
               </Link>
               <p className="mt-4 text-purple-200/60 max-w-sm">
                 Building tomorrow's digital solutions with cutting-edge technology and innovative design.

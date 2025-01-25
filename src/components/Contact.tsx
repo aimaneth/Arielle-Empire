@@ -179,7 +179,7 @@ export default function Contact() {
                       id={field}
                       value={formData[field as keyof FormData]}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-lg glass-effect text-white px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
+                      className={`mt-1 block w-full rounded-lg bg-[#121212] border border-purple-500/20 text-white px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
                         errors[field as keyof FormErrors] ? 'ring-2 ring-red-500' : ''
                       }`}
                       aria-invalid={errors[field as keyof FormErrors] ? 'true' : 'false'}
@@ -203,7 +203,7 @@ export default function Contact() {
                   id="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className={`mt-1 block w-full rounded-lg glass-effect text-white px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
+                  className={`mt-1 block w-full rounded-lg bg-[#121212] border border-purple-500/20 text-white px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
                     errors.subject ? 'ring-2 ring-red-500' : ''
                   }`}
                   aria-invalid={errors.subject ? 'true' : 'false'}
@@ -225,7 +225,7 @@ export default function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className={`mt-1 block w-full rounded-lg glass-effect text-white px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
+                  className={`mt-1 block w-full rounded-lg bg-[#121212] border border-purple-500/20 text-white px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
                     errors.message ? 'ring-2 ring-red-500' : ''
                   }`}
                   aria-invalid={errors.message ? 'true' : 'false'}
@@ -285,7 +285,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="glass-effect rounded-2xl p-8"
+            className="bg-[#121212] border border-purple-500/20 rounded-2xl p-8"
           >
             <h3 className="text-xl font-semibold text-white mb-8">Contact Information</h3>
             <div className="space-y-6">

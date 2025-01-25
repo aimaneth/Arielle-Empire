@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -37,8 +38,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-400">
-              ARIELLE EMPIRE
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo/logo.png"
+                alt="Arielle Empire"
+                width={150}
+                height={40}
+                className="h-10 w-auto"
+                priority
+              />
             </Link>
           </div>
           
