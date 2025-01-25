@@ -24,7 +24,7 @@ const team: TeamMember[] = [
   {
     name: 'Ariffin Yusof',
     role: 'CEO & Founder',
-    image: '/team/john.jpg',
+    image: '/team/ariffin.jpg',
     bio: 'Visionary leader with 7 years of experience in Business Development.',
     gradient: 'from-purple-600 to-fuchsia-600',
     social: {
@@ -36,7 +36,7 @@ const team: TeamMember[] = [
   {
     name: 'Aiman Asyraf',
     role: 'CTO',
-    image: '/team/jane.jpg',
+    image: '/team/aiman.jpg',
     bio: 'Tech expert specializing in cloud architecture and AI.',
     gradient: 'from-fuchsia-600 to-violet-600',
     social: {
@@ -48,7 +48,7 @@ const team: TeamMember[] = [
   {
     name: 'Emir Asyraf',
     role: 'Lead Developer',
-    image: '/team/mike.jpg',
+    image: '/team/emir.jpg',
     bio: 'Full-stack developer with a passion for clean code.',
     gradient: 'from-violet-600 to-purple-600',
     social: {
@@ -60,7 +60,7 @@ const team: TeamMember[] = [
   {
     name: 'Habib Abdullah',
     role: 'UX Designer',
-    image: '/team/sarah.jpg',
+    image: '/team/habib.jpg',
     bio: 'Creative designer focused on user-centered experiences.',
     gradient: 'from-purple-500 to-fuchsia-500',
     social: {
