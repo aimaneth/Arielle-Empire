@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur"/>
+      <feColorMatrix in="blur" type="saturate" values="2"/>
+    </filter>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(168, 85, 247, 0.9)"/>
+      <stop offset="100%" style="stop-color:rgba(147, 51, 234, 0.9)"/>
+    </linearGradient>
+  </defs>
+  <circle cx="12" cy="12" r="10" fill="rgba(147, 51, 234, 0.15)" filter="url(#glow)"/>
+  <g fill="url(#iconGrad)">
+    <path d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771z"/>
+    <path d="M20.684 19.364L18.434 5.364a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0z"/>
+    <path d="M14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 15.867z"/>
+  </g>
+</svg> 
