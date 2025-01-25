@@ -2,6 +2,8 @@
 
 Modern digital solutions company website built with Next.js 14, React, TypeScript, and Tailwind CSS.
 
+![Arielle Empire Website](https://github.com/user-attachments/assets/d7fac5e0-7438-455e-81ae-f8a69d560fd1)
+
 ## Features
 
 - 🎨 Modern and sleek design with glass morphism effects
