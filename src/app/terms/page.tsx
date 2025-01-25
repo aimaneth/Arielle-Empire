@@ -29,7 +29,7 @@ export default function Terms() {
 
             <h2>2. Services Description</h2>
             <p>
-              Arielle Empire provides web and mobile application development services, including but not limited to:
+              Grit Studio provides web and mobile application development services, including but not limited to:
             </p>
             <ul>
               <li>Custom software development</li>
@@ -52,19 +52,19 @@ export default function Terms() {
 
             <h2>4. Intellectual Property</h2>
             <p>
-              All content, features, and functionality of our services are owned by Arielle Empire and are protected by international copyright, trademark, and other intellectual property laws.
+              All content, features, and functionality of our services are owned by Grit Studio and are protected by international copyright, trademark, and other intellectual property laws.
             </p>
 
             <h2>5. Limitation of Liability</h2>
             <p>
-              Arielle Empire shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.
+              Grit Studio shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.
             </p>
 
             <h2>6. Contact Information</h2>
             <p>
               For any questions regarding these Terms of Service, please contact us at:
             </p>
-            <p>Email: arielleofficialhq@gmail.com</p>
+            <p>Email: gritstudiox@gmail.com</p>
             <p>Phone: +60 (17) 371-4084</p>
           </div>
         </motion.div>

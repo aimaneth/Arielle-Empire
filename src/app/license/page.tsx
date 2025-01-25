@@ -24,7 +24,7 @@ export default function License() {
 
             <h2>Company Registration</h2>
             <p>
-              Arielle Empire is officially registered in Malaysia under the following details:
+              Grit Studio is officially registered in Malaysia under the following details:
             </p>
             <ul>
               <li>Registration Number: 201903354986</li>
@@ -68,7 +68,7 @@ export default function License() {
             <p>
               For any inquiries regarding our business licenses and registrations, please contact us at:
             </p>
-            <p>Email: arielleofficialhq@gmail.com</p>
+            <p>Email: gritstudiox@gmail.com</p>
             <p>Phone: +60 (17) 371-4084</p>
             <p>
               Registered Office Address:<br />

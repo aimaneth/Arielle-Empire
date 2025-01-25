@@ -13,28 +13,28 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Arielle Empire | Modern Digital Solutions',
+  title: 'Grit Studio | Modern Digital Solutions',
   description: 'Professional web, mobile, and cloud solutions for modern businesses. We specialize in web development, mobile apps, cloud solutions, and AI integration.',
   keywords: 'web development, mobile apps, cloud solutions, AI integration, digital agency, software development, Malaysia',
-  authors: [{ name: 'Arielle Empire' }],
-  creator: 'Arielle Empire',
-  publisher: 'Arielle Empire',
+  authors: [{ name: 'Grit Studio' }],
+  creator: 'Grit Studio',
+  publisher: 'Grit Studio',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Arielle Empire',
+    title: 'Grit Studio',
     description: 'Professional Digital Solutions for Modern Businesses',
     images: ['/og-image.jpg'],
     locale: 'en_US',
     type: 'website',
-    siteName: 'Arielle Empire',
+    siteName: 'Grit Studio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arielle Empire',
+    title: 'Grit Studio',
     description: 'Professional Digital Solutions for Modern Businesses',
     images: ['/og-image.jpg'],
   },

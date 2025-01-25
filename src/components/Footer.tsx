@@ -135,7 +135,7 @@ export default function Footer() {
               <Link href="/" className="flex items-center">
                 <Image
                   src="/logo/logo.png"
-                  alt="Arielle Empire"
+                  alt="Grit Studio"
                   width={180}
                   height={48}
                   className="h-12 w-auto"

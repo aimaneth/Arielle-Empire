@@ -63,7 +63,7 @@ export default function Privacy() {
             <p>
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
-            <p>Email: arielleofficialhq@gmail.com</p>
+            <p>Email: gritstudiox@gmail.com</p>
             <p>Phone: +60 (17) 371-4084</p>
           </div>
         </motion.div>
