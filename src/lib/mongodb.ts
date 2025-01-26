@@ -2,8 +2,8 @@ import mongoose from 'mongoose'
 
 declare global {
   var mongoose: {
-    conn: typeof mongoose | null
-    promise: Promise<typeof mongoose> | null
+    conn: any
+    promise: Promise<any> | null
   }
 }
 
@@ -29,9 +29,7 @@ async function connectDB() {
       bufferCommands: false,
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose
-    })
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then(() => mongoose)
   }
 
   try {

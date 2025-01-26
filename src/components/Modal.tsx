@@ -38,12 +38,20 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
 
       setSubmitStatus('success')
       setFormData({ name: '', email: '', message: '' })
+      
+      // Clear success message and close modal after 3 seconds
       setTimeout(() => {
+        setSubmitStatus('idle')
         onClose()
-      }, 2000) // Close after 2 seconds so user can see success message
+      }, 3000)
     } catch (error) {
       console.error('Error sending message:', error)
       setSubmitStatus('error')
+      
+      // Clear error message after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 3000)
     } finally {
       setIsSubmitting(false)
     }

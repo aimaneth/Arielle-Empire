@@ -7,26 +7,40 @@ export async function POST(request: Request) {
   try {
     const { email } = await request.json()
 
-    // Connect to MongoDB
+    if (!email) {
+      console.error('No email provided in request')
+      return NextResponse.json({ 
+        error: 'Email is required'
+      }, { status: 400 })
+    }
+
+    console.log('Attempting to connect to MongoDB...')
     await connectDB()
+    console.log('MongoDB connected successfully')
 
     // Check if subscriber already exists
+    console.log('Checking for existing subscriber:', email)
     const existingSubscriber = await Subscriber.findOne({ email })
     if (existingSubscriber) {
       if (existingSubscriber.status === 'unsubscribed') {
         // Reactivate subscription
         existingSubscriber.status = 'active'
         await existingSubscriber.save()
+        console.log('Reactivated subscription for:', email)
       } else {
+        console.log('Email already subscribed:', email)
         return NextResponse.json({ 
           message: 'Email already subscribed'
         }, { status: 400 })
       }
     } else {
       // Create new subscriber
+      console.log('Creating new subscriber:', email)
       await Subscriber.create({ email })
+      console.log('New subscriber created successfully')
     }
 
+    console.log('Setting up email transporter...')
     // Create reusable transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -37,6 +51,7 @@ export async function POST(request: Request) {
     })
 
     // Send confirmation email to subscriber
+    console.log('Sending welcome email to:', email)
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: email,
@@ -56,26 +71,26 @@ export async function POST(request: Request) {
         </div>
       `,
     })
+    console.log('Welcome email sent successfully')
 
     // Send notification to admin
+    console.log('Sending notification to admin')
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER,
       subject: 'New Newsletter Subscription',
       text: `New subscriber: ${email}\nTimestamp: ${new Date().toLocaleString()}`,
     })
-
-    // Log the subscription
-    console.log(`New newsletter subscription: ${email} at ${new Date().toLocaleString()}`)
+    console.log('Admin notification sent successfully')
 
     return NextResponse.json({ 
       message: 'Successfully subscribed to newsletter'
     }, { status: 200 })
 
   } catch (error) {
-    console.error('Newsletter subscription error:', error)
+    console.error('Detailed subscription error:', error)
     return NextResponse.json({ 
-      error: 'Failed to process subscription'
+      error: error instanceof Error ? error.message : 'Failed to process subscription'
     }, { status: 500 })
   }
 } 

@@ -115,9 +115,19 @@ export default function Contact() {
         subject: '',
         message: ''
       })
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 3000)
     } catch (error) {
       console.error('Error sending message:', error)
       setSubmitStatus('error')
+      
+      // Clear error message after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 3000)
     } finally {
       setIsSubmitting(false)
     }

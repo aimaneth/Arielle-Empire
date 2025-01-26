@@ -98,7 +98,6 @@ export default function Footer() {
     setErrorMessage('')
 
     try {
-      // Call your newsletter subscription API
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
@@ -107,14 +106,23 @@ export default function Footer() {
         body: JSON.stringify({ email }),
       })
 
-      if (!response.ok) throw new Error('Subscription failed')
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Subscription failed')
+      }
 
       setSubscriptionStatus('success')
       setEmail('')
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => {
+        setSubscriptionStatus('idle')
+      }, 3000)
     } catch (error) {
       console.error('Newsletter subscription error:', error)
       setSubscriptionStatus('error')
-      setErrorMessage('Failed to subscribe. Please try again later.')
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to subscribe. Please try again later.')
     }
   }
 
