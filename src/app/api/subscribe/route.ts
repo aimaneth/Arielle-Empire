@@ -1,9 +1,31 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import connectDB from '@/lib/mongodb'
+import Subscriber from '@/models/Subscriber'
 
 export async function POST(request: Request) {
   try {
     const { email } = await request.json()
+
+    // Connect to MongoDB
+    await connectDB()
+
+    // Check if subscriber already exists
+    const existingSubscriber = await Subscriber.findOne({ email })
+    if (existingSubscriber) {
+      if (existingSubscriber.status === 'unsubscribed') {
+        // Reactivate subscription
+        existingSubscriber.status = 'active'
+        await existingSubscriber.save()
+      } else {
+        return NextResponse.json({ 
+          message: 'Email already subscribed'
+        }, { status: 400 })
+      }
+    } else {
+      // Create new subscriber
+      await Subscriber.create({ email })
+    }
 
     // Create reusable transporter
     const transporter = nodemailer.createTransport({
