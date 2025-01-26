@@ -3,13 +3,19 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
+  minimumScale: 1,
   themeColor: '#0A0A0A',
+  viewportFit: 'cover',
 }
 
 export const metadata: Metadata = {
@@ -82,6 +88,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0A0A0A" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <style>{`
           /* Remove Next.js loading bar */
           #nprogress {
@@ -89,14 +96,14 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <body className={`${inter.className} bg-[#0A0A0A] text-white antialiased relative min-h-screen`}>
-        {/* Global noise overlay */}
-        <div className="noise fixed inset-0" />
+      <body className={`${inter.className} bg-[#0A0A0A] text-white antialiased relative min-h-screen overflow-x-hidden`}>
+        {/* Global noise overlay with reduced animation impact */}
+        <div className="noise fixed inset-0 opacity-[0.03] pointer-events-none" />
         
-        {/* Main content */}
-        <div className="relative z-10">
+        {/* Main content with improved performance */}
+        <div className="relative z-10 w-full">
           <Navbar />
-          <main className="relative">{children}</main>
+          <main className="relative w-full">{children}</main>
         </div>
       </body>
     </html>
