@@ -13,72 +13,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Smooth transitions - optimized for performance */
+/* Simplified transitions - removed interactive animations */
 * {
-  transition-property: opacity, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  /* Use hardware acceleration */
+  transition: opacity 0.3s ease-out;
+  /* Hardware acceleration */
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Animations */
-@keyframes blob {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(20px, -20px) scale(1.05); }
-}
-
+/* Simplified animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes subtle-flow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
+  50% { transform: translateY(-5px); }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.animate-subtle-flow {
-  animation: subtle-flow 12s ease-in-out infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-.animation-delay-100 {
-  animation-delay: 0.1s;
-}
-
-.animation-delay-200 {
-  animation-delay: 0.2s;
-}
-
-.animation-delay-300 {
-  animation-delay: 0.3s;
+  animation: float 4s ease-in-out infinite;
 }
 
 /* Custom scrollbar */
@@ -99,7 +50,7 @@ body {
   background: rgba(192, 132, 252, 0.5);
 }
 
-/* Glass effect */
+/* Glass effect - simplified */
 .glass-effect {
   @apply bg-black/40 backdrop-blur-sm border border-purple-900/20;
 }
@@ -109,9 +60,9 @@ body {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-violet-400;
 }
 
-/* Add this utility class */
+/* Simplified noise texture */
 .noise-texture {
-  @apply relative before:absolute before:inset-0 before:bg-[url('/noise.png')] before:opacity-[0.07] before:mix-blend-overlay before:pointer-events-none;
+  @apply relative before:absolute before:inset-0 before:bg-[url('/noise.png')] before:opacity-[0.05] before:mix-blend-overlay before:pointer-events-none;
 }
 
 @layer utilities {
@@ -123,58 +74,30 @@ body {
     height: 100%;
     z-index: 0;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.02;
     pointer-events: none;
     mix-blend-mode: soft-light;
     will-change: transform;
     transform: translateZ(0);
   }
-
-  .noise-contrast {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.04;
-    pointer-events: none;
-    mix-blend-mode: overlay;
-  }
 }
 
-@keyframes noise {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -5%); }
-  20% { transform: translate(-10%, 5%); }
-  30% { transform: translate(5%, -10%); }
-  40% { transform: translate(-5%, 15%); }
-  50% { transform: translate(-10%, 5%); }
-  60% { transform: translate(15%, 0); }
-  70% { transform: translate(0, 10%); }
-  80% { transform: translate(-15%, 0); }
-  90% { transform: translate(10%, 5%); }
-}
-
-/* Reduce animation duration for mobile */
+/* Mobile optimizations */
 @media (max-width: 768px) {
-  .animate-blob {
-    animation: blob 5s infinite;
+  * {
+    transition-duration: 0.2s;
   }
-
+  
   .animate-float {
-    animation: float 4s ease-in-out infinite;
-  }
-
-  .animate-subtle-flow {
-    animation: subtle-flow 8s ease-in-out infinite;
+    animation: none;
   }
 }
 
 /* Respect user's animation preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
     scroll-behavior: auto !important;
   }
 }
