@@ -36,7 +36,6 @@ const footerLinks: FooterSection[] = [
     title: 'Resources',
     links: [
       { name: 'Portfolio', href: '#portfolio' },
-      { name: 'Documentation', href: '#' },
     ],
   },
   {
@@ -52,7 +51,7 @@ const footerLinks: FooterSection[] = [
 const socialLinks: SocialLink[] = [
   { 
     name: 'GitHub', 
-    href: '#', 
+    href: 'https://github.com/GritStudio', 
     icon: '/github.svg',
     hoverColor: 'hover:text-gray-400'
   },
