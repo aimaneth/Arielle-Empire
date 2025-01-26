@@ -147,7 +147,7 @@ export default function Footer() {
                 />
               </Link>
               <p className="mt-4 text-purple-200/60 max-w-sm">
-                Building tomorrow's digital solutions with cutting-edge technology and innovative design.
+                Building tomorrow&apos;s digital solutions with cutting-edge technology and innovative design.
               </p>
               <p className="mt-2 text-purple-200/40 text-sm">
                 201903354986 (003060459-U)

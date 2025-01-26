@@ -114,7 +114,7 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Building Tomorrow's
+            Building Tomorrow&apos;s
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-violet-400">
               Digital Solutions
             </span>
@@ -148,10 +148,6 @@ export default function Hero() {
               Learn More
             </button>
           </motion.div>
-
-          <p className="mt-6 text-lg leading-8 text-purple-200/60">
-            Let&apos;s transform your vision into reality with our cutting-edge solutions.
-          </p>
         </div>
 
         {/* Scroll indicator */}
