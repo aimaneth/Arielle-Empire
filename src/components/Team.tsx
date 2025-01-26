@@ -28,9 +28,9 @@ const team: TeamMember[] = [
     bio: 'Visionary leader with 7 years of experience in Business Development.',
     gradient: 'from-purple-600 to-fuchsia-600',
     social: {
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
+      twitter: 'https://x.com/ariffinyusof',
+      linkedin: 'https://linkedin.com/in/ariffinyusof',
+      github: 'https://github.com/ariffinyusof',
     },
   },
   {
@@ -40,9 +40,9 @@ const team: TeamMember[] = [
     bio: 'Tech expert specializing in cloud architecture and AI.',
     gradient: 'from-fuchsia-600 to-violet-600',
     social: {
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
+      twitter: 'https://x.com/aimaneth',
+      linkedin: 'https://linkedin.com/in/aimaneth',
+      github: 'https://github.com/aimaneth',
     },
   },
   {
@@ -52,9 +52,9 @@ const team: TeamMember[] = [
     bio: 'Full-stack developer with a passion for clean code.',
     gradient: 'from-violet-600 to-purple-600',
     social: {
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
+      twitter: 'https://x.com/emirasyraf',
+      linkedin: 'https://linkedin.com/in/emirasyraf',
+      github: 'https://github.com/emirasyraf1247',
     },
   },
   {
@@ -64,9 +64,9 @@ const team: TeamMember[] = [
     bio: 'Creative designer focused on user-centered experiences.',
     gradient: 'from-purple-500 to-fuchsia-500',
     social: {
-      twitter: '#',
-      linkedin: '#',
-      github: '#',
+      twitter: 'https://x.com/habibabdullah',
+      linkedin: 'https://linkedin.com/in/habibabdullah',
+      github: 'https://github.com/hxbib95',
     },
   },
 ]
@@ -140,19 +140,15 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
             <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
               {Object.entries(member.social).map(([platform, url]) => (
-                url && (
-                  <motion.a
-                    key={platform}
-                    href={url}
-                    whileHover={{ y: -3 }}
-                    className="text-white/90 hover:text-purple-400 transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name}'s ${platform}`}
-                  >
-                    {socialIcons[platform as keyof typeof socialIcons]}
-                  </motion.a>
-                )
+                <Link
+                  key={platform}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-200/60 hover:text-purple-300 transition-colors"
+                >
+                  {socialIcons[platform as keyof typeof socialIcons]}
+                </Link>
               ))}
             </div>
           </div>

@@ -92,25 +92,10 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // Form validation
-    const formErrors = validateForm(formData)
-    setErrors(formErrors)
-    if (Object.keys(formErrors).length > 0) return
-
-    // Rate limiting - one submission per minute
-    const now = Date.now()
-    if (now - lastSubmitTime < 60000) {
-      setSubmitStatus('error')
-      setErrors({ message: 'Please wait a minute before submitting again' })
-      return
-    }
-
     setIsSubmitting(true)
-    
+    setSubmitStatus('idle')
+
     try {
-      // Send email using your preferred email service
-      // Example using a hypothetical API endpoint:
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -119,15 +104,20 @@ export default function Contact() {
         body: JSON.stringify(formData),
       })
 
-      if (!response.ok) throw new Error('Failed to send message')
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
 
       setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
-      setLastSubmitTime(now)
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
     } catch (error) {
-      console.error('Contact form error:', error)
+      console.error('Error sending message:', error)
       setSubmitStatus('error')
-      setErrors({ message: 'Failed to send message. Please try again later.' })
     } finally {
       setIsSubmitting(false)
     }

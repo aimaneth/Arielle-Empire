@@ -35,10 +35,8 @@ const footerLinks: FooterSection[] = [
   {
     title: 'Resources',
     links: [
-      { name: 'Blog', href: '#blog' },
       { name: 'Portfolio', href: '#portfolio' },
       { name: 'Documentation', href: '#' },
-      { name: 'Guides', href: '#' },
     ],
   },
   {

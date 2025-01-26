@@ -16,14 +16,37 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Add your form submission logic here
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    onClose()
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+      setTimeout(() => {
+        onClose()
+      }, 2000) // Close after 2 seconds so user can see success message
+    } catch (error) {
+      console.error('Error sending message:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -49,7 +72,7 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 className="w-full max-w-lg relative"
               >
-                <div className="relative bg-[#0A0A0A] rounded-2xl p-6 sm:p-8 shadow-2xl shadow-purple-900/20 border border-purple-900/20 m-auto">
+                <div className="relative bg-[#121212] rounded-2xl p-6 sm:p-8 shadow-2xl shadow-purple-900/20 border border-purple-900/20 m-auto">
                   {/* Close button */}
                   <button
                     onClick={onClose}
@@ -72,7 +95,7 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
                         type="text"
                         id="name"
                         required
-                        className="w-full px-4 py-3 rounded-lg glass-effect text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-lg bg-[#121212] border border-purple-500/20 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                         value={formData.name}
                         onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                       />
@@ -86,7 +109,7 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
                         type="email"
                         id="email"
                         required
-                        className="w-full px-4 py-3 rounded-lg glass-effect text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-lg bg-[#121212] border border-purple-500/20 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                       />
@@ -100,11 +123,22 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
                         id="message"
                         rows={4}
                         required
-                        className="w-full px-4 py-3 rounded-lg glass-effect text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-lg bg-[#121212] border border-purple-500/20 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                         value={formData.message}
                         onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                       />
                     </div>
+
+                    {submitStatus === 'success' && (
+                      <p className="text-green-400 text-sm text-center">
+                        Message sent successfully!
+                      </p>
+                    )}
+                    {submitStatus === 'error' && (
+                      <p className="text-red-400 text-sm text-center">
+                        Failed to send message. Please try again.
+                      </p>
+                    )}
 
                     <motion.button
                       whileHover={{ scale: 1.02 }}
