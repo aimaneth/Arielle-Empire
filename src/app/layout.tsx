@@ -94,7 +94,7 @@ export default function RootLayout({
         <div className="noise fixed inset-0" />
         
         {/* Main content */}
-        <div className="relative">
+        <div className="relative z-10">
           <Navbar />
           <main className="relative">{children}</main>
         </div>
