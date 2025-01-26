@@ -42,20 +42,11 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
-              <motion.h2 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-violet-400"
-              >
+              <h2 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-violet-400">
                 About Us
-              </motion.h2>
+              </h2>
               <p className="text-lg text-purple-200/80">
                 We are a forward-thinking technology company specializing in creating innovative digital solutions 
                 for businesses worldwide. With years of experience and a passionate team of experts, 
@@ -65,11 +56,8 @@ export default function About() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <motion.div
+                <div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative group"
                 >
                   <div className={`absolute inset-0 rounded-lg -z-10 ${
@@ -90,18 +78,13 @@ export default function About() {
                     </div>
                     <p className="text-purple-200/70 text-sm">{feature.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column - Stats & Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mt-12 lg:mt-0 space-y-8"
-          >
+          <div className="mt-12 lg:mt-0 space-y-8">
             <div className="relative rounded-2xl overflow-hidden h-[300px]">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-fuchsia-600/20 mix-blend-overlay z-10" />
               <Image
@@ -115,11 +98,8 @@ export default function About() {
 
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
-                <motion.div
+                <div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className={`p-6 rounded-xl backdrop-blur-sm ${
                     index === 0 ? 'bg-gradient-to-r from-purple-500/10 to-fuchsia-500/10' :
                     index === 1 ? 'bg-gradient-to-r from-blue-500/10 to-cyan-500/10' :
@@ -136,10 +116,10 @@ export default function About() {
                     {stat.value}
                   </div>
                   <p className="text-purple-200/80 text-sm">{stat.label}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
