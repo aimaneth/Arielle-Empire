@@ -13,23 +13,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Simplified transitions - removed interactive animations */
+/* Minimal transitions - mobile optimized */
 * {
-  transition: opacity 0.3s ease-out;
-  /* Hardware acceleration */
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  /* Remove all transitions by default */
+  transition: none;
+  /* Basic performance optimizations */
   -webkit-font-smoothing: antialiased;
 }
 
-/* Simplified animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+/* Only apply hover transitions on desktop */
+@media (min-width: 1024px) {
+  .hover-effect {
+    transition: opacity 0.2s ease-out;
+  }
 }
 
 /* Custom scrollbar */
@@ -50,19 +46,19 @@ body {
   background: rgba(192, 132, 252, 0.5);
 }
 
-/* Glass effect - simplified */
+/* Simplified glass effect - static */
 .glass-effect {
-  @apply bg-black/40 backdrop-blur-sm border border-purple-900/20;
+  @apply bg-black/40 backdrop-blur-[2px] border border-purple-900/20;
 }
 
-/* Gradient text */
+/* Static gradient text */
 .gradient-text {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-violet-400;
 }
 
-/* Simplified noise texture */
+/* Static noise texture */
 .noise-texture {
-  @apply relative before:absolute before:inset-0 before:bg-[url('/noise.png')] before:opacity-[0.05] before:mix-blend-overlay before:pointer-events-none;
+  @apply relative before:absolute before:inset-0 before:bg-[url('/noise.png')] before:opacity-[0.03] before:mix-blend-overlay before:pointer-events-none;
 }
 
 @layer utilities {
@@ -74,22 +70,9 @@ body {
     height: 100%;
     z-index: 0;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
+    opacity: 0.015;
     pointer-events: none;
     mix-blend-mode: soft-light;
-    will-change: transform;
-    transform: translateZ(0);
-  }
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  * {
-    transition-duration: 0.2s;
-  }
-  
-  .animate-float {
-    animation: none;
   }
 }
 
