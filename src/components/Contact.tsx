@@ -88,12 +88,19 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+
+    // Validate form before submission
+    const validationErrors = validateForm(formData)
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      setIsSubmitting(false)
+      return
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -116,7 +123,6 @@ export default function Contact() {
         message: ''
       })
       
-      // Clear success message after 3 seconds
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 3000)
@@ -124,7 +130,6 @@ export default function Contact() {
       console.error('Error sending message:', error)
       setSubmitStatus('error')
       
-      // Clear error message after 3 seconds
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 3000)
@@ -264,7 +269,7 @@ export default function Contact() {
                     exit={{ opacity: 0, y: -10 }}
                     className="text-green-400 text-center"
                   >
-                    Message sent successfully! We'll get back to you soon.
+                    Message sent successfully! We&apos;ll get back to you soon.
                   </motion.p>
                 )}
                 {submitStatus === 'error' && !errors.message && (

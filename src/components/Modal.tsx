@@ -89,9 +89,9 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
                     <XMarkIcon className="w-6 h-6" />
                   </button>
 
-                  <h2 className="text-2xl font-bold text-white mb-2">Let's Get Started</h2>
+                  <h2 className="text-2xl font-bold text-white mb-2">Let&apos;s Get Started</h2>
                   <p className="text-purple-200/60 mb-6">
-                    Tell us about your project and we'll get back to you within 24 hours.
+                    Tell us about your project and we&apos;ll get back to you within 24 hours.
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-4">

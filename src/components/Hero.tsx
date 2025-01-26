@@ -148,6 +148,10 @@ export default function Hero() {
               Learn More
             </button>
           </motion.div>
+
+          <p className="mt-6 text-lg leading-8 text-purple-200/60">
+            Let&apos;s transform your vision into reality with our cutting-edge solutions.
+          </p>
         </div>
 
         {/* Scroll indicator */}
