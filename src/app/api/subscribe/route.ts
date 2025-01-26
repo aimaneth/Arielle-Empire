@@ -1,21 +1,15 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import connectDB from '@/lib/mongodb'
+import clientPromise from '@/lib/mongodb'
 import Subscriber from '@/models/Subscriber'
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const { email } = await request.json()
-
-    if (!email) {
-      console.error('No email provided in request')
-      return NextResponse.json({ 
-        error: 'Email is required'
-      }, { status: 400 })
-    }
-
+    const { email } = await req.json()
+    
     console.log('Attempting to connect to MongoDB...')
-    await connectDB()
+    const client = await clientPromise
+    const db = client.db("arielle")
     console.log('MongoDB connected successfully')
 
     // Check if subscriber already exists
@@ -36,7 +30,10 @@ export async function POST(request: Request) {
     } else {
       // Create new subscriber
       console.log('Creating new subscriber:', email)
-      await Subscriber.create({ email })
+      await db.collection('subscribers').insertOne({
+        email,
+        createdAt: new Date()
+      })
       console.log('New subscriber created successfully')
     }
 
@@ -86,11 +83,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ 
       message: 'Successfully subscribed to newsletter'
     }, { status: 200 })
-
   } catch (error) {
-    console.error('Detailed subscription error:', error)
-    return NextResponse.json({ 
-      error: error instanceof Error ? error.message : 'Failed to process subscription'
-    }, { status: 500 })
+    console.error('Subscription error:', error)
+    return NextResponse.json(
+      { error: 'Failed to subscribe' },
+      { status: 500 }
+    )
   }
 } 
