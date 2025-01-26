@@ -14,29 +14,43 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: 'Grit Studio | Modern Digital Solutions',
-  description: 'Professional web, mobile, and cloud solutions for modern businesses. We specialize in web development, mobile apps, cloud solutions, and AI integration.',
-  keywords: 'web development, mobile apps, cloud solutions, AI integration, digital agency, software development, Malaysia',
-  authors: [{ name: 'Grit Studio' }],
+  description: 'Leading software development company specializing in web development, mobile apps, cloud solutions, and AI integration. Transform your business with our cutting-edge technology solutions.',
+  keywords: 'web development, mobile apps, cloud solutions, AI integration, digital agency, software development, Malaysia, Grit Studio, tech company',
+  authors: [{ name: 'Grit Studio', url: 'https://grit-studio.vercel.app' }],
   creator: 'Grit Studio',
   publisher: 'Grit Studio',
+  metadataBase: new URL('https://grit-studio.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Grit Studio',
-    description: 'Professional Digital Solutions for Modern Businesses',
-    images: ['/og-image.jpg'],
-    locale: 'en_US',
     type: 'website',
     siteName: 'Grit Studio',
+    title: 'Grit Studio | Transform Your Digital Presence',
+    description: 'Partner with Malaysia\'s innovative tech studio for web development, mobile apps, cloud solutions, and AI integration. Transform your ideas into powerful digital experiences.',
+    url: 'https://grit-studio.vercel.app',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Grit Studio - Modern Digital Solutions',
+      }
+    ],
+    locale: 'en_MY',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grit Studio',
-    description: 'Professional Digital Solutions for Modern Businesses',
-    images: ['/og-image.jpg'],
+    site: '@GritStudio',
+    creator: '@GritStudio',
+    title: 'Grit Studio | Modern Digital Solutions',
+    description: 'Transform your business with our cutting-edge technology solutions. Expert web development, mobile apps, cloud solutions, and AI integration.',
+    images: ['/twitter-card.jpg'],
   },
   robots: {
     index: true,
@@ -48,6 +62,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    google: 'your-google-verification-code',
   },
 }
 
