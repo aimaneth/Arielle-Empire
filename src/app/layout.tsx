@@ -29,6 +29,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' }
+    ],
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -82,12 +91,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0A0A0A" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <style>{`
           /* Remove Next.js loading bar */
