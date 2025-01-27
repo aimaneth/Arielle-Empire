@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
+import { BannerProvider } from '@/context/BannerContext'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -97,6 +98,15 @@ export default function RootLayout({
           #nprogress {
             display: none !important;
           }
+          /* Banner height variables */
+          :root {
+            --banner-height: 52px; /* Increased height for mobile (2 rows) */
+          }
+          @media (min-width: 640px) {
+            :root {
+              --banner-height: 32px; /* Single row for larger screens */
+            }
+          }
         `}</style>
       </head>
       <body className={`${inter.className} bg-[#0A0A0A] text-white antialiased relative min-h-screen overflow-x-hidden`}>
@@ -105,8 +115,10 @@ export default function RootLayout({
         
         {/* Main content with improved performance */}
         <div className="relative z-10 w-full">
-          <Navbar />
-          <main className="relative w-full">{children}</main>
+          <BannerProvider>
+            <Navbar />
+            <main className="relative w-full">{children}</main>
+          </BannerProvider>
         </div>
       </body>
     </html>
