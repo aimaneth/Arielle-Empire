@@ -28,6 +28,7 @@ const footerLinks: FooterSection[] = [
     links: [
       { name: 'About', href: '#about' },
       { name: 'Services', href: '#services' },
+      { name: 'Blog', href: '/blog' },
       { name: 'Team', href: '#team' },
       { name: 'Contact', href: '#contact' },
     ],
